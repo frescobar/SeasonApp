@@ -1,5 +1,5 @@
 # SeasonApp
-### Simple app that fetch your current position and display if it's winter or summer depending if you're 
+### Simple app that fetch your current position and display if it's winter or summer
 
 You need to accept location request in your browser
 
