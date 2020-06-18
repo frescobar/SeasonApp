@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import SeasonDisplay from "./SeasonDisplay";
+import Loading from "./Loading";
 
 export default class App extends Component {
   constructor(props) {
@@ -25,15 +27,12 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {!this.state.errorMessage && !this.state.lat && <h3>Loading...</h3>}
-        {this.state.lat ? (
-          <h3>Latitud: {this.state.lat}</h3>
-        ) : (
-          <h3>Error: {this.state.errorMessage}</h3>
-        )}
-      </div>
-    );
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />;
+    }
+    if (!this.state.lat && this.state.errorMessage) {
+      return <h3>Error: {this.state.errorMessage}</h3>;
+    }
+    return <Loading message="Please accept location request" />;
   }
 }
